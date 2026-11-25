@@ -7,9 +7,9 @@ Live site: https://sohail654312-gif.github.io/zsc-demo/
 ## Demo status
 
 - All prices are samples, not verified daily market data.
-- The business name and location are supplied by the requester, not independently verified. No phone number, opening hours, certification, customer endorsement, completed project or supplier relationship is asserted.
+- The business name and location are supplied by the requester, not independently verified. The WhatsApp number +92 311 9556822 was subsequently supplied by the requester and is published as an owner-supplied contact, not independently verified. No opening hours, certification, customer endorsement, completed project or supplier relationship is asserted.
 - Infrastructure scenes are original illustrations and illustrative applications, not completed ZSC projects.
-- Quotation generation is local and non-binding. Nothing is submitted to ZSC. Downloads contain a demo disclaimer. WhatsApp opens a draft only after the visitor configures an authorised contact number and clicks the WhatsApp button.
+- Quotation generation is local and non-binding. Nothing is submitted to ZSC. Downloads contain a demo disclaimer. WhatsApp opens a draft addressed to the owner-supplied number after the visitor clicks the WhatsApp button. Visitors can change or clear the contact in local demo settings. No message is sent automatically.
 - Google Maps searches the supplied area. It is not a verified shop pin. The third-party embed loads only when requested.
 
 ## Deployment
@@ -22,7 +22,7 @@ Edit `assets/rates.json` and commit to `main` for site-wide changes. Price field
 
 The page's **Edit demo rates** dialog saves local overrides only in the current browser. It is a public demo control, not an authenticated administration system. Reset restores the published file's values. Other visitors do not see local changes.
 
-`whatsapp` is blank intentionally. Before publishing a real number, verify the business affiliation and obtain authorisation. Use international format, e.g. a plus sign followed by country code and digits. Do not insert a fictional reachable number. Visitors may configure their own authorised number for testing.
+`whatsapp` is set to `+923119556822`, supplied by the requester for this site. It powers the direct WhatsApp enquiry link and generated quotation drafts. Its business affiliation has not been independently verified. Use only authorised numbers; a visitor can change or clear the number in local settings. No test sends a message to this number.
 
 ## Calculation assumptions
 
@@ -35,7 +35,7 @@ The page's **Edit demo rates** dialog saves local overrides only in the current 
 
 English/Urdu toggle translates the page and quotations and switches document direction to RTL. Preferences and local sample rates use guarded browser storage. Calculators and forms validate ranges and reject fractional bar/bag counts, missing values and negative quantities.
 
-Included: canonical URL, description, Open Graph/Twitter metadata with a PNG preview, theme colour, SVG favicon, sitemap, robots file and LocalBusiness structured data that explicitly describes the demo. No reviews, ratings, exact coordinates, certifications or unverified contact details are included.
+Included: canonical URL, description, Open Graph/Twitter metadata with a PNG preview, theme colour, SVG favicon, sitemap, robots file and LocalBusiness structured data that explicitly describes the demo. No reviews, ratings, exact coordinates, certifications or invented contact details are included. The owner-supplied telephone is included with an explicit demo/unverified description.
 
 For a real Google Business Profile, verify the real name, precise address/map pin, category, phone and opening hours with the owner; replace demo copy with verified facts and complete Google's own verification. This website does not create, claim or verify a Business Profile, nor guarantee search placement. Urdu uses the same URL and therefore does not claim a separate `hreflang` page.
 
