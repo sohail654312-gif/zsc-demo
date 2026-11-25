@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sohail654312-gif.github.io/zsc-demo/sitemap.xml

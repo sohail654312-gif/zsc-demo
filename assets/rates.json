@@ -1,0 +1,12 @@
+{
+  "demo": true,
+  "currency": "PKR",
+  "updated": "2026-11-25",
+  "steel40": 250,
+  "steel60": 265,
+  "cementOpc": 1450,
+  "cementSrc": 1550,
+  "deliveryBase": 1500,
+  "deliveryKm": 100,
+  "whatsapp": ""
+}
