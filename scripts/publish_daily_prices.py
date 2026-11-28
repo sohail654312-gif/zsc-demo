@@ -57,10 +57,12 @@ def publish(raw, approved, dry_run=False):
     missing=[(start+dt.timedelta(days=n)).isoformat() for n in range(7) if (start+dt.timedelta(days=n)).isoformat() not in dates]
     rows=[]
     for i in items:
-        price=format(i["low"],",.2f")
+        maund=i["unit"]=="kg" and bool(re.search(r"\bgrade\s*[-–]?\s*40\b",i["name"],re.I))
+        factor=40 if maund else 1
+        price=format(i["low"]*factor,",.2f")
         if i["high"]!=i["low"]:
-            price+="–"+format(i["high"],",.2f")
-        unit="per kg" if i["unit"]=="kg" else "per 50 kg bag"
+            price+="–"+format(i["high"]*factor,",.2f")
+        unit="per maund (40 kg) / فی من" if maund else ("per kg" if i["unit"]=="kg" else "per 50 kg bag")
         rows.append('<div class="rate-item"><span class="rate-name">'+html.escape(i["name"])+'</span><div class="rate-value">PKR '+price+'</div><span class="rate-unit">'+unit+' · '+i["date"]+'</span><a href="'+html.escape(i["url"],quote=True)+'" rel="noopener noreferrer">'+html.escape(i["source"])+'</a></div>')
     snapshot='<div id="public-rates-snapshot"><p>Historical market references: '+start.isoformat()+' to '+end.isoformat()+'. Dated observations on '+str(len(dates))+'/7 days. Not current ZSC selling prices.</p><div class="rate-board">'+''.join(rows)+'</div><p>Unreported dates: '+(", ".join(missing) or "none")+'. Request a current quotation.</p></div>'
     page=ROOT/"index.html"
