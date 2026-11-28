@@ -1,0 +1,27 @@
+name: Refresh completed-week report dates
+on:
+  schedule:
+    - cron: '15 0 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: zsc-report-rollover
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Hide stale observations in crawlable HTML
+        run: python3 scripts/render_weekly_report.py
+      - name: Publish only changed report state
+        run: |
+          if git diff --quiet -- index.html; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'Refresh previous completed week; flag missing reviewed prices'
+          git push origin HEAD:main

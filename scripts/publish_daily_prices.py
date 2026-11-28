@@ -9,6 +9,7 @@ import re
 from pathlib import Path
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
+from render_weekly_report import refresh
 ROOT = Path(__file__).resolve().parents[1]
 START = "<!-- DAILY_PRICE_SNAPSHOT_START -->"
 END = "<!-- DAILY_PRICE_SNAPSHOT_END -->"
@@ -53,6 +54,9 @@ def publish(raw, approved, dry_run=False):
     start,end=previous_week(today)
     items=validate(json.loads(raw),start,end)
     data={"schemaVersion":2,"currency":"PKR","weekStart":start.isoformat(),"weekEnd":end.isoformat(),"items":items}
+    existing=json.loads((ROOT/"assets/daily-prices.json").read_text())
+    if existing.get("localEstimates",{}).get("weekStart")==str(start) and existing["localEstimates"].get("weekEnd")==str(end):
+        data["localEstimates"]=existing["localEstimates"]
     dates={i["date"] for i in items}
     missing=[(start+dt.timedelta(days=n)).isoformat() for n in range(7) if (start+dt.timedelta(days=n)).isoformat() not in dates]
     rows=[]
@@ -75,7 +79,7 @@ def publish(raw, approved, dry_run=False):
     sitemap_text=re.sub(r"<lastmod>[^<]+</lastmod>","<lastmod>"+today.isoformat()+"</lastmod>",sitemap.read_text(encoding="utf-8"))
     if not dry_run:
         (ROOT/"assets/daily-prices.json").write_text(json.dumps(data,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-        page.write_text(before+START+"\n"+snapshot+"\n"+END+after,encoding="utf-8")
+        page.write_text(refresh(content,data),encoding="utf-8")
         sitemap.write_text(sitemap_text,encoding="utf-8")
     print(f"Validated {len(items)} observations for {start}–{end}; dry_run={dry_run}")
 

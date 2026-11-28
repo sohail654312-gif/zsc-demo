@@ -18,14 +18,14 @@ function displayPrice(i){
 }
 function localEstimates(d){
  const e=d?.localEstimates;
- if(!e||!Array.isArray(e.items)||e.items.length>40)return [];
+ if(!e||e.weekStart!==d.weekStart||e.weekEnd!==d.weekEnd||!Array.isArray(e.items)||e.items.length>40)return [];
  return e.items.filter(i=>i&&typeof i.name==='string'&&i.name.trim()&&i.name.length<=120&&['maund','kg','bag'].includes(i.unit)&&Number.isFinite(i.low)&&Number.isFinite(i.high)&&i.low>0&&i.high>=i.low&&i.high<=1000000);
 }
 function localSection(d){
  const items=localEstimates(d);if(!items.length)return null;
  const section=document.createElement('div');section.id='local-estimates';
  const title=document.createElement('h4');title.textContent='Lower Dir indicative price ranges / دیر لوئر کے تخمینی نرخ';
- const note=document.createElement('p');note.textContent='Locally adjusted planning estimates for this reference report; not observed historical rates or current ZSC selling prices. / یہ مقامی اندازے ہیں، تصدیق شدہ نرخ نہیں۔';
+ const note=document.createElement('p');note.textContent='User-suggested planning estimates for '+d.weekStart+' — '+d.weekEnd+'; not observed historical rates or current ZSC selling prices. / یہ مقامی اندازے ہیں، تصدیق شدہ نرخ نہیں۔';
  const board=document.createElement('div');board.className='rate-board';
  for(const i of items){
  const el=document.createElement('div');el.className='rate-item';
