@@ -39,6 +39,51 @@
       "date": "2026-11-19",
       "source": "Pakistan Bureau of Statistics",
       "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Annex_19.11.2026.pdf"
+    },
+    {
+      "name": "Lucky Cement",
+      "unit": "bag",
+      "low": 1600,
+      "high": 1640,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Bestway Cement",
+      "unit": "bag",
+      "low": 1605,
+      "high": 1640,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Maple Leaf Cement",
+      "unit": "bag",
+      "low": 1625,
+      "high": 1660,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Cherat Cement",
+      "unit": "bag",
+      "low": 1605,
+      "high": 1645,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Kohat Cement",
+      "unit": "bag",
+      "low": 1595,
+      "high": 1635,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
     }
   ]
 }
