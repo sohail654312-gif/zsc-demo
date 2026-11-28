@@ -36,6 +36,12 @@ def build(origin, preview=False):
             # Allow crawlers to read the page's noindex directive.
             content = "User-agent: *\nAllow: /\n"
         (out / name).write_text(content, encoding="utf-8")
+    shutil.copytree(ROOT / "saria-calculator", out / "saria-calculator")
+    mini = out / "saria-calculator/index.html"
+    mini_content = mini.read_text(encoding="utf-8").replace(OLD, new)
+    if preview:
+        mini_content = mini_content.replace('content="index,follow,max-image-preview:large"', 'content="noindex,nofollow"')
+    mini.write_text(mini_content, encoding="utf-8")
     if preview:
         (out / "_headers").write_text("/*\n  X-Robots-Tag: noindex, nofollow\n", encoding="utf-8")
     print("Built ZSC static site; canonical origin:", new, "preview:", preview)
