@@ -85,5 +85,52 @@
       "source": "Imaarat published market estimates",
       "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
     }
-  ]
+  ],
+  "localEstimates": {
+    "basis": "User-suggested Lower Dir planning ranges; not measured historical prices or shop quotes. Grade 40 range provided directly; others add PKR 20 to the low and PKR 40 to the high per displayed unit.",
+    "items": [
+      {
+        "name": "Grade 40 saria",
+        "unit": "maund",
+        "low": 11000,
+        "high": 11400
+      },
+      {
+        "name": "Grade 60 saria",
+        "unit": "kg",
+        "low": 274,
+        "high": 303
+      },
+      {
+        "name": "Lucky Cement",
+        "unit": "bag",
+        "low": 1620,
+        "high": 1680
+      },
+      {
+        "name": "Bestway Cement",
+        "unit": "bag",
+        "low": 1625,
+        "high": 1680
+      },
+      {
+        "name": "Maple Leaf Cement",
+        "unit": "bag",
+        "low": 1645,
+        "high": 1700
+      },
+      {
+        "name": "Cherat Cement",
+        "unit": "bag",
+        "low": 1625,
+        "high": 1685
+      },
+      {
+        "name": "Kohat Cement",
+        "unit": "bag",
+        "low": 1615,
+        "high": 1675
+      }
+    ]
+  }
 }
