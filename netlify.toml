@@ -1,0 +1,22 @@
+[build]
+  command = "python3 scripts/build_netlify.py"
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/daily-prices.json"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[context.deploy-preview]
+  [context.deploy-preview.environment]
+    ZSC_NOINDEX = "true"
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    ZSC_NOINDEX = "true"

@@ -1,0 +1,56 @@
+name: Prepare weekly ZSC market report
+on:
+  workflow_dispatch:
+    inputs:
+      items:
+        description: 'JSON observations: name, unit, low, high, date, source, url'
+        required: true
+        type: string
+      owner_approved:
+        description: 'I reviewed dated sources from the previous completed Monday-Sunday week'
+        required: true
+        type: boolean
+        default: false
+      dry_run:
+        description: 'Validate only, without creating a price update branch'
+        type: boolean
+        default: true
+permissions:
+  contents: write
+concurrency:
+  group: zsc-weekly-rate-preparation
+  cancel-in-progress: false
+jobs:
+  prepare:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate and prepare approved rate snapshot
+        env:
+          DAILY_ITEMS: ${{ inputs.items }}
+          OWNER_APPROVED: ${{ inputs.owner_approved }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$DRY_RUN" = "true" ]; then
+            python3 scripts/publish_daily_prices.py --dry-run
+          else
+            python3 scripts/publish_daily_prices.py
+          fi
+      - name: Create review branch
+        if: inputs.dry_run == false
+        env:
+          RATE_BRANCH: daily-prices/${{ github.run_id }}-${{ github.run_attempt }}
+        run: |
+          if git diff --quiet; then
+            echo "No price changes." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$RATE_BRANCH"
+          git add assets/daily-prices.json index.html sitemap.xml
+          git commit -m "Prepare reviewed ZSC previous-week market report"
+          git push origin "$RATE_BRANCH"
+          echo "[Review prices and create PR](https://github.com/$GITHUB_REPOSITORY/compare/main...$RATE_BRANCH?expand=1)" >> "$GITHUB_STEP_SUMMARY"
+          echo "Owner must merge the reviewed PR to publish. Confirm the live page after deployment." >> "$GITHUB_STEP_SUMMARY"

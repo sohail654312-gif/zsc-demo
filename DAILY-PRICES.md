@@ -1,0 +1,10 @@
+# ZSC weekly market history and quotation-only current pricing
+The public report uses only the previous completed Monday–Sunday week in Pakistan time. It contains dated historical market references, not shop selling prices. Current-week observations are rejected even if approved. If a new report is missing, the dynamic board displays no verified observations instead of relabelling older rates. The crawlable static fallback always states its explicit historical dates.
+
+After merging the feature, use Actions → Prepare weekly ZSC market report → Run workflow on main. Provide JSON observations with name, unit (kg or bag), low, high, date (YYYY-MM-DD), source, and HTTPS url. Review source dates and amounts; owner_approved means source review, not a declaration of ZSC selling prices. Dry-run first, then prepare a branch and merge the reviewed PR. Repeat weekly on Monday. No paid API or automatic source scraper is included.
+
+Never fill missing days or brands from today's data. A dated national or regional estimate must not be described as a Timergara shop quote. FF Steel brand-specific observations need a dated brand-specific source. Calculator quantities remain available; numeric costs only appear after a visitor explicitly enters their own planning inputs. Current quotations use WhatsApp. Existing filenames retain daily-prices for compatibility; their behavior is weekly.
+
+Grade 40 steel observations remain in source PKR/kg internally, but both the browser and the static weekly report convert them to PKR per maund (40 kg), multiplying by 40 once. Grade 60 remains per kg and cement per 50 kg bag. Current prices remain quotation-only.
+
+For the 16–22 November report only, localEstimates contains user-suggested Lower Dir planning ranges: Grade 40 PKR 11,000–11,400 per 40 kg maund; other displayed steel/cement ranges add PKR 20 at the lower end and PKR 40 at the upper end per displayed unit. These are explicitly not measured historical rates, and source observations stay unchanged. The next weekly workflow replaces the report and does not silently carry forward these adjustments. Review new local estimates separately before publication.

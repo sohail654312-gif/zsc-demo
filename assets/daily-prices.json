@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "currency": "PKR",
+  "weekStart": "2026-11-16",
+  "weekEnd": "2026-11-22",
+  "items": [
+    {
+      "name": "Grade 40 saria (Pakistan)",
+      "unit": "kg",
+      "low": 252,
+      "high": 261,
+      "date": "2026-11-19",
+      "source": "Latest Price in Pakistan, citing AtaPata",
+      "url": "https://latestpricepakistan.com/cement-steel-saria-price-pakistan-4-november-2026/"
+    },
+    {
+      "name": "Grade 60 saria (Pakistan)",
+      "unit": "kg",
+      "low": 254,
+      "high": 263,
+      "date": "2026-11-19",
+      "source": "Latest Price in Pakistan, citing AtaPata",
+      "url": "https://latestpricepakistan.com/cement-steel-saria-price-pakistan-4-november-2026/"
+    },
+    {
+      "name": "Cement (Peshawar, all brands survey)",
+      "unit": "bag",
+      "low": 1562,
+      "high": 1562,
+      "date": "2026-11-19",
+      "source": "Pakistan Bureau of Statistics",
+      "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Annex_19.11.2026.pdf"
+    },
+    {
+      "name": "Cement (Pakistan survey average)",
+      "unit": "bag",
+      "low": 1577,
+      "high": 1577,
+      "date": "2026-11-19",
+      "source": "Pakistan Bureau of Statistics",
+      "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Annex_19.11.2026.pdf"
+    },
+    {
+      "name": "Lucky Cement",
+      "unit": "bag",
+      "low": 1600,
+      "high": 1640,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Bestway Cement",
+      "unit": "bag",
+      "low": 1605,
+      "high": 1640,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Maple Leaf Cement",
+      "unit": "bag",
+      "low": 1625,
+      "high": 1660,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Cherat Cement",
+      "unit": "bag",
+      "low": 1605,
+      "high": 1645,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    },
+    {
+      "name": "Kohat Cement",
+      "unit": "bag",
+      "low": 1595,
+      "high": 1635,
+      "date": "2026-11-19",
+      "source": "Imaarat published market estimates",
+      "url": "https://imaarat.com/blogs/construction-guides/cement-rate-today-in-pakistan"
+    }
+  ],
+  "localEstimates": {
+    "basis": "User-suggested Lower Dir planning ranges; not measured historical prices or shop quotes. Grade 40 range provided directly; others add PKR 20 to the low and PKR 40 to the high per displayed unit.",
+    "items": [
+      {
+        "name": "Grade 40 saria",
+        "unit": "maund",
+        "low": 11000,
+        "high": 11400
+      },
+      {
+        "name": "Grade 60 saria",
+        "unit": "kg",
+        "low": 274,
+        "high": 303
+      },
+      {
+        "name": "Lucky Cement",
+        "unit": "bag",
+        "low": 1620,
+        "high": 1680
+      },
+      {
+        "name": "Bestway Cement",
+        "unit": "bag",
+        "low": 1625,
+        "high": 1680
+      },
+      {
+        "name": "Maple Leaf Cement",
+        "unit": "bag",
+        "low": 1645,
+        "high": 1700
+      },
+      {
+        "name": "Cherat Cement",
+        "unit": "bag",
+        "low": 1625,
+        "high": 1685
+      },
+      {
+        "name": "Kohat Cement",
+        "unit": "bag",
+        "low": 1615,
+        "high": 1675
+      }
+    ]
+  }
+}
