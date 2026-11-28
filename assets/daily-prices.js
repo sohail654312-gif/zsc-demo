@@ -16,6 +16,26 @@ function displayPrice(i){
  const format=n=>(Math.round(n*factor*100)/100).toLocaleString('en-PK',{maximumFractionDigits:2});
  return {value:'PKR '+format(i.low)+(i.high===i.low?'':'–'+format(i.high)),unit:maund?'per maund (40 kg) / فی من':i.unit==='kg'?'per kg / فی کلو':'per 50 kg bag / فی بوری'};
 }
+function localEstimates(d){
+ const e=d?.localEstimates;
+ if(!e||!Array.isArray(e.items)||e.items.length>40)return [];
+ return e.items.filter(i=>i&&typeof i.name==='string'&&i.name.trim()&&i.name.length<=120&&['maund','kg','bag'].includes(i.unit)&&Number.isFinite(i.low)&&Number.isFinite(i.high)&&i.low>0&&i.high>=i.low&&i.high<=1000000);
+}
+function localSection(d){
+ const items=localEstimates(d);if(!items.length)return null;
+ const section=document.createElement('div');section.id='local-estimates';
+ const title=document.createElement('h4');title.textContent='Lower Dir indicative price ranges / دیر لوئر کے تخمینی نرخ';
+ const note=document.createElement('p');note.textContent='Locally adjusted planning estimates for this reference report; not observed historical rates or current ZSC selling prices. / یہ مقامی اندازے ہیں، تصدیق شدہ نرخ نہیں۔';
+ const board=document.createElement('div');board.className='rate-board';
+ for(const i of items){
+ const el=document.createElement('div');el.className='rate-item';
+ const name=document.createElement('span');name.className='rate-name';name.textContent=i.name;
+ const value=document.createElement('div');value.className='rate-value';value.textContent='PKR '+i.low.toLocaleString('en-PK')+'–'+i.high.toLocaleString('en-PK');
+ const unit=document.createElement('span');unit.className='rate-unit';unit.textContent=i.unit==='maund'?'per maund (40 kg) / فی من':i.unit==='kg'?'per kg / فی کلو':'per 50 kg bag / فی بوری';
+ el.append(name,value,unit);board.append(el);
+ }
+ section.append(title,note,board);return section;
+}
 const status=()=>document.getElementById('public-rates-status');
 const snapshot=()=>document.getElementById('public-rates-snapshot');
 function paint(d){
@@ -33,8 +53,10 @@ function paint(d){
  const a=document.createElement('a');a.href=i.url;a.textContent=i.source;a.rel='noopener noreferrer';el.append(name,val,unit,a);grid.append(el);
  }
  const missing=document.createElement('p');const dates=Array.from({length:7},(_,i)=>{const d=new Date(start+'T00:00:00Z');d.setUTCDate(d.getUTCDate()+i);return iso(d)});missing.textContent='No dated observations: '+(dates.filter(d=>!seen.has(d)).join(', ')||'none')+'. FF Steel brand-specific price: see the listed observations or request confirmation.';
- snapshot().replaceChildren(p,grid,missing);
+ const local=localSection(d);
+ if(local){const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent='Original regional/national source observations (unadjusted)';details.append(summary,p,grid,missing);snapshot().replaceChildren(local,details);}
+ else snapshot().replaceChildren(p,grid,missing);
 }
 let cached=null;async function refresh(){try{const r=await fetch('assets/daily-prices.json',{cache:'no-store'});if(!r.ok)throw Error('fetch');cached=await r.json();}catch{cached=null;}paint(cached);}
-window.ZSCWeeklyPrices={previousWeek,valid,displayPrice};refresh();setInterval(()=>paint(cached),60000);
+window.ZSCWeeklyPrices={previousWeek,valid,displayPrice,localEstimates};refresh();setInterval(()=>paint(cached),60000);
 })();
