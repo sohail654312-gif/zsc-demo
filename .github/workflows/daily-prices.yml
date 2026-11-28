@@ -1,13 +1,13 @@
-name: Prepare daily ZSC prices
+name: Prepare weekly ZSC market report
 on:
   workflow_dispatch:
     inputs:
       items:
-        description: 'JSON array of confirmed rates (name, price, unit, optional calculatorKey)'
+        description: 'JSON observations: name, unit, low, high, date, source, url'
         required: true
         type: string
       owner_approved:
-        description: 'I confirm these are the shop rates for today in Pakistan'
+        description: 'I reviewed dated sources from the previous completed Monday-Sunday week'
         required: true
         type: boolean
         default: false
@@ -18,7 +18,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: zsc-daily-rate-preparation
+  group: zsc-weekly-rate-preparation
   cancel-in-progress: false
 jobs:
   prepare:
@@ -50,7 +50,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git switch -c "$RATE_BRANCH"
           git add assets/daily-prices.json index.html sitemap.xml
-          git commit -m "Prepare owner-approved ZSC daily prices"
+          git commit -m "Prepare reviewed ZSC previous-week market report"
           git push origin "$RATE_BRANCH"
           echo "[Review prices and create PR](https://github.com/$GITHUB_REPOSITORY/compare/main...$RATE_BRANCH?expand=1)" >> "$GITHUB_STEP_SUMMARY"
           echo "Owner must merge the reviewed PR to publish. Confirm the live page after deployment." >> "$GITHUB_STEP_SUMMARY"
