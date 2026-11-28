@@ -1,7 +1,44 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "currency": "PKR",
-  "date": null,
-  "status": "unpublished",
-  "items": []
+  "weekStart": "2026-11-16",
+  "weekEnd": "2026-11-22",
+  "items": [
+    {
+      "name": "Grade 40 saria (Pakistan)",
+      "unit": "kg",
+      "low": 252,
+      "high": 261,
+      "date": "2026-11-19",
+      "source": "Latest Price in Pakistan, citing AtaPata",
+      "url": "https://latestpricepakistan.com/cement-steel-saria-price-pakistan-4-november-2026/"
+    },
+    {
+      "name": "Grade 60 saria (Pakistan)",
+      "unit": "kg",
+      "low": 254,
+      "high": 263,
+      "date": "2026-11-19",
+      "source": "Latest Price in Pakistan, citing AtaPata",
+      "url": "https://latestpricepakistan.com/cement-steel-saria-price-pakistan-4-november-2026/"
+    },
+    {
+      "name": "Cement (Peshawar, all brands survey)",
+      "unit": "bag",
+      "low": 1562,
+      "high": 1562,
+      "date": "2026-11-19",
+      "source": "Pakistan Bureau of Statistics",
+      "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Annex_19.11.2026.pdf"
+    },
+    {
+      "name": "Cement (Pakistan survey average)",
+      "unit": "bag",
+      "low": 1577,
+      "high": 1577,
+      "date": "2026-11-19",
+      "source": "Pakistan Bureau of Statistics",
+      "url": "https://www.pbs.gov.pk/wp-content/uploads/2020/07/Annex_19.11.2026.pdf"
+    }
+  ]
 }
