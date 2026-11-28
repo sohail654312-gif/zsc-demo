@@ -20,3 +20,6 @@
 [context.branch-deploy]
   [context.branch-deploy.environment]
     ZSC_NOINDEX = "true"
+
+[context.production.environment]
+  GOOGLE_SITE_VERIFICATION = "op-5Rf__ImyXsTef1KVrP5skh2CUq66wu-GU2-OO_Tc"
