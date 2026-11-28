@@ -36,3 +36,8 @@
     flex-shrink: 0;
   }
 }
+
+/* Accessible FAQ touch targets without changing the approved layout. */
+#faq details { margin-block: .35rem; }
+#faq summary { min-height: 44px; padding: .75rem .25rem; cursor: pointer; }
+#faq summary:focus-visible { outline: 3px solid #b57900; outline-offset: 3px; }
